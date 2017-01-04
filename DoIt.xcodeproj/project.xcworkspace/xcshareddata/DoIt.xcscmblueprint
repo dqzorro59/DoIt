@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "FCBFD266E915C906AB3F19E73A4649027E3E7837",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C670C6474B8F2331BFE4A3657956AEA1E133C2BE" : 9223372036854775807,
+    "FCBFD266E915C906AB3F19E73A4649027E3E7837" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0A668D77-6E45-4A48-8185-050B416F6228",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C670C6474B8F2331BFE4A3657956AEA1E133C2BE" : "",
+    "FCBFD266E915C906AB3F19E73A4649027E3E7837" : "DoIt\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DoIt",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DoIt.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/dqzorro59\/swiftapp2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C670C6474B8F2331BFE4A3657956AEA1E133C2BE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/dqzorro59\/DoIt.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FCBFD266E915C906AB3F19E73A4649027E3E7837"
+    }
+  ]
+}
