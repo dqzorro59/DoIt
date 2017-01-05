@@ -13,16 +13,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     
     var tasks : [Task] = []
-    var selectedIndex = 0
+    // Removed do to core data
+    //var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        tasks = createTasks()
         tableView.dataSource = self
         tableView.delegate = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getTasks()
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,39 +41,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let localTask = tasks[indexPath.row]
         
         if localTask.critical {
-            cell.textLabel?.text = "❗️\(localTask.name)"
+            cell.textLabel?.text = "❗️\(localTask.name!)"
         } else {
-            cell.textLabel?.text = localTask.name
+            cell.textLabel?.text = localTask.name!
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        selectedIndex = indexPath.row
-        
+                
         let localTask = tasks[indexPath.row]
         
         performSegue(withIdentifier: "selectTaskSeque", sender: localTask)
-        
-    }
-    
-    func createTasks() -> [Task] {
-        
-        let task1 = Task()
-        task1.name = "Get Haircut"
-        task1.critical = true
-        
-        let task2 = Task()
-        task2.name = "Go to Market"
-        task2.critical = false
-        
-        let task3 = Task()
-        task3.name = "Paint House"
-        task3.critical = false
-        
-        return [task1, task2, task3]
         
     }
     
@@ -77,17 +62,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         performSegue(withIdentifier: "addSegue", sender: nil)
     }
     
+    // Pulling things out of Core DAta
+    func getTasks() {
+        
+        // Context is for Core Data
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            tasks = try context.fetch(Task.fetchRequest()) as! [Task]
+            print(tasks)
+        } catch {
+            print("Critical Error Exception - Defensive Programming")
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "addSegue" {
-            let nextVC = segue.destination as! CreateTasksViewController
-            nextVC.previousVC = self
-        }
+        // Removed due to Core Data
+        //     if segue.identifier == "addSegue" {
+        //         let nextVC = segue.destination as! CreateTasksViewController
+        //         nextVC.previousVC = self
+        //     }
         
         if segue.identifier == "selectTaskSeque" {
             let nextVC = segue.destination as! CompleteTaskViewController
-            nextVC.task = sender as! Task
-            nextVC.previousVC = self
+            nextVC.task = sender as? Task
         }
     }
 }

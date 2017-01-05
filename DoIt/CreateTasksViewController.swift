@@ -10,7 +10,7 @@ import UIKit
 
 class CreateTasksViewController: UIViewController {
 
-    var previousVC = ViewController()
+    //var previousVC = ViewController()
     
     @IBOutlet weak var importantSwitch: UISwitch!
     
@@ -26,13 +26,20 @@ class CreateTasksViewController: UIViewController {
     @IBAction func addTapped(_ sender: Any) {
         // Create task from outlet information
         
-        let task = Task()
+        // Context is for Core Data
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let task = Task(context: context)
         
         task.name = taskNameTextField.text!
         task.critical = importantSwitch.isOn
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
-        previousVC.tasks.append(task)
-        previousVC.tableView.reloadData()
+        // Removed due to Core Data
+        // previousVC.tasks.append(task)
+        // previousVC.tableView.reloadData()
+        
+        // Pop Back
         navigationController!.popViewController(animated: true)
         
     }
